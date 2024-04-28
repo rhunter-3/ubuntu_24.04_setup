@@ -1,3 +1,7 @@
+# Check ownership of kvm devise and user to the kvm group
+ls -al /dev/kvm
+sudo usermod -aG kvm $USER
+
 # Add Docker's official GPG key:
 sudo apt-get update
 sudo apt-get install ca-certificates curl
@@ -12,18 +16,6 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-# List the available versions:
-apt-cache madison docker-ce | awk '{ print $3 }'
-
-# 5:24.0.0-1~ubuntu.22.04~jammy
-# 5:23.0.6-1~ubuntu.22.04~jammy
-# ...
-
-VERSION_STRING=5:24.0.0-1~ubuntu.22.04~jammy
-sudo apt-get install docker-ce=$VERSION_STRING docker-ce-cli=$VERSION_STRING containerd.io docker-buildx-plugin docker-compose-plugin
-
-# Convenience script install
-curl -fsSL https://get.docker.com -o get-docker.sh
-sudo sh ./get-docker.sh --dry-run
+# This isntallation will end in an error "N: Download is performed unsandboxed as root as file"
+# This error can be ignored as per the official documentation
+sudo apt-get install ./Downloads/docker-desktop-4.29.0-amd64.deb
