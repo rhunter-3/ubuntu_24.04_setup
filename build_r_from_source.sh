@@ -1,9 +1,15 @@
 # BUILD R FROM SOURCE ON UBUNTU
 # R-4.4.0
 
-# Install Linux dependencies
 # Make sure src repos are uncommented in /etc/apt/sources.list
 # Ubuntu sources have moved to /etc/apt/sources.list.d/ubuntu.sources in 24.04
+# Types: deb-src
+# URIs: http://au.archive.ubuntu.com/ubuntu/
+# Suites: noble noble-updates noble-backports
+# Components: main restricted universe multiverse
+# Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+# Install Linux dependencies
 sudo apt-get build-dep r-base
 
 # Download and extract source code
