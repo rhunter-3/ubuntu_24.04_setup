@@ -1,1 +1,6 @@
+# Before running rstudio
 sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
+# Before running docker desktop
+sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+systemctl --user restart docker-desktop
